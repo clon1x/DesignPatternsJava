@@ -2,6 +2,7 @@ package com.lvl.solid.ocp;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class OCPDemo {
 
@@ -11,13 +12,23 @@ public class OCPDemo {
 		
 		ProductFilter filter = new ProductFilter();
 		
-		System.out.println("Green products: ");
-		filter.filter(products, new ColorSpecification(Color.GREEN))
-			.forEach(p -> System.out.println(" - " + p.getName() + " is green"));
+		ColorSpecification greenProductSpecification = new ColorSpecification(Color.GREEN);
+		SizeSpecification largeProductSpecification = new SizeSpecification(Size.LARGE);
 
-		System.out.println("\nLarge products: ");
-		filter.filter(products, new SizeSpecification(Size.LARGE))
-			.forEach(p -> System.out.println(" - " + p.getName() + " is large"));
+		printFilteredProducts("Green products: ", filter.filter(products, greenProductSpecification), "is green");
+		printFilteredProducts("\nLarge products: ", filter.filter(products, largeProductSpecification), "is large");
+
+		AndSpecification<Product> andSpecification = new AndSpecification<>();
+		andSpecification.addSpecification(greenProductSpecification)
+			.addSpecification(largeProductSpecification);
+		
+		printFilteredProducts("\nLarge green products: ", filter.filter(products, andSpecification), "is large and green");
+		
+	}
+
+	private static void printFilteredProducts(String header, Stream<Product> productStream, String message) {
+		System.out.println(header);
+		productStream.forEach(p -> System.out.println(" - " + p.getName() + " " + message));
 	}
 
 	private static List<Product> createProductList() {
