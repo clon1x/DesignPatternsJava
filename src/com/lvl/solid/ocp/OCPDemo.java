@@ -12,10 +12,12 @@ public class OCPDemo {
 		ProductFilter filter = new ProductFilter();
 		
 		System.out.println("Green products: ");
-		
 		filter.filter(products, new ColorSpecification(Color.GREEN))
 			.forEach(p -> System.out.println(" - " + p.getName() + " is green"));
 
+		System.out.println("\nLarge products: ");
+		filter.filter(products, new SizeSpecification(Size.LARGE))
+			.forEach(p -> System.out.println(" - " + p.getName() + " is large"));
 	}
 
 	private static List<Product> createProductList() {
