@@ -2,6 +2,7 @@ package com.lvl.solid.srp;
 
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,5 +29,8 @@ public class Journal {
 			out.println(toString());
 		}
 	}
+	
+	public void load(String filename) {}
+	public void load(URL url) {}
 	
 }
