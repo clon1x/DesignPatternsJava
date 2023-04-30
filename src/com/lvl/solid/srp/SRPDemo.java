@@ -11,7 +11,8 @@ public class SRPDemo {
 		
 		System.out.println(j);
 		
-		j.save("myJournal.txt");
+		JournalPersistance persistance = new JournalPersistance(j);
+		persistance.save("myJournal.txt");
 	}
 
 }
