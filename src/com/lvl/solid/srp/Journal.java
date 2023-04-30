@@ -1,5 +1,7 @@
 package com.lvl.solid.srp;
 
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +21,12 @@ public class Journal {
 	@Override
 	public String toString() {
 		return String.join(System.lineSeparator(), entries);
+	}
+	
+	public void save(String filename) throws FileNotFoundException {
+		try (PrintStream out = new PrintStream(filename)) {
+			out.println(toString());
+		}
 	}
 	
 }
