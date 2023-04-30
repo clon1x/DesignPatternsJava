@@ -34,6 +34,10 @@ public class Rectangle {
 		this.height = height;
 	}
 
+	public boolean isSquare() {
+		return width == height;
+	}
+	
 	@Override
 	public String toString() {
 		return String.format("Rectangle [width=%s, height=%s]", width, height);
