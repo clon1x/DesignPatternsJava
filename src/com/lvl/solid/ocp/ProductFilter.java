@@ -3,22 +3,11 @@ package com.lvl.solid.ocp;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class ProductFilter {
+public class ProductFilter implements Filter<Product> {
 
-	public Stream<Product> filterByColor(List<Product> products, Color color) {
-		return products.stream().filter(product -> product.getColor() == color);
+	@Override
+	public Stream<Product> filter(List<Product> items, Specification<Product> condition) {
+		return items.stream().filter(p -> condition.isSatisfied(p));
 	}
 
-	public Stream<Product> filterBySize(List<Product> products, 
-			 							Size size) {
-		return products.stream().filter(product -> product.getSize() == size);
-	}
-
-	public Stream<Product> filterBySizeAndColor(List<Product> products,
-												Size size,
-												Color color) {
-		
-		return products.stream().filter(product -> product.getSize() == size && product.getColor() == color);
-	}
-	
 }
