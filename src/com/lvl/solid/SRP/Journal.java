@@ -1,4 +1,4 @@
-package com.lvl.solid.srp;
+package com.lvl.solid.SRP;
 
 import java.util.ArrayList;
 import java.util.List;

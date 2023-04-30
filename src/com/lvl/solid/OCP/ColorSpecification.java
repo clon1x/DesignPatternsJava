@@ -1,4 +1,4 @@
-package com.lvl.solid.ocp;
+package com.lvl.solid.OCP;
 
 public class ColorSpecification implements Specification<Product> {
 

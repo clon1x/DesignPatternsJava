@@ -1,4 +1,4 @@
-package com.lvl.solid.srp;
+package com.lvl.solid.SRP;
 
 import java.io.FileNotFoundException;
 

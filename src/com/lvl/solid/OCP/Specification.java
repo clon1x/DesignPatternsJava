@@ -1,4 +1,4 @@
-package com.lvl.solid.ocp;
+package com.lvl.solid.OCP;
 
 public interface Specification<T> {
 	boolean isSatisfied(T item);

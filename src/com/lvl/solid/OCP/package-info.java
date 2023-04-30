@@ -6,4 +6,4 @@
  * @author aragorn
  *
  */
-package com.lvl.solid.ocp;
+package com.lvl.solid.OCP;

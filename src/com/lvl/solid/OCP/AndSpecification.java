@@ -1,4 +1,4 @@
-package com.lvl.solid.ocp;
+package com.lvl.solid.OCP;
 
 import java.util.ArrayList;
 import java.util.List;
