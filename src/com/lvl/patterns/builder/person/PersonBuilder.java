@@ -1,12 +1,17 @@
 package com.lvl.patterns.builder.person;
 
-public class PersonBuilder {
+public class PersonBuilder<T extends PersonBuilder<T>>{
 
 	protected Person person = new Person();
 	
-	public PersonBuilder withName(String name) {
+	public T withName(String name) {
 		person.name = name;
-		return this;
+		return self();
+	}
+	
+	@SuppressWarnings("unchecked")
+	protected T self() {
+		return (T) this;
 	}
 	
 	public Person build() {
