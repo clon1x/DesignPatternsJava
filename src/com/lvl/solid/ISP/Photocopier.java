@@ -5,14 +5,17 @@ import com.lvl.solid.ISP.interfaces.Scanner;
 
 public class Photocopier implements Printer, Scanner {
 
+	private LaserPrinter printer = new LaserPrinter();
+	private ScannerImpl scanner = new ScannerImpl();
+	
 	@Override
 	public void scan(Document d) {
-		// scan document
+		scanner.scan(d);
 	}
 
 	@Override
 	public void print(Document d) {
-		// print document
+		printer.print(d);
 	}
 
 }
