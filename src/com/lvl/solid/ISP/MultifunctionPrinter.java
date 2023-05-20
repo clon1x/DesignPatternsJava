@@ -1,6 +1,8 @@
 package com.lvl.solid.ISP;
 
-public class MultifunctionPrinter implements Machine {
+import com.lvl.solid.ISP.interfaces.Multifunction;
+
+public class MultifunctionPrinter implements Multifunction {
 
 	@Override
 	public void print(Document d) {
