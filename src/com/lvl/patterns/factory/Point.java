@@ -4,23 +4,26 @@ public class Point {
 
 	private double x, y;
 	
-	/**
-	 * Cartesian coordinates
-	 * @param x
-	 * @param y
-	 */
-	public Point(double x, double y) {
-		this.x = x;
-		this.y = y;
+	public enum CoordinateSystem {
+		CARTESIAN, POLAR
 	}
 	
 	/**
-	 * Polar coordinates
-	 * @param rho
-	 * @param theta
+	 * Cartesian or polar coordinates
+	 * @param a - x coordinate, or rho
+	 * @param b - y coordinate, or theta
 	 */
-	public Point(double rho, double theta) {
-		x = rho * Math.cos(theta);
-		y = rho * Math.sin(theta);
+	public Point(double a, double b, CoordinateSystem cs) {
+		switch (cs) {
+			case CARTESIAN:
+				this.x = a;
+				this.y = b;
+				break;
+			
+			case POLAR:
+				this.x = a * Math.cos(b);
+				this.y = a * Math.sin(b);
+				break;
+		}
 	}
 }
