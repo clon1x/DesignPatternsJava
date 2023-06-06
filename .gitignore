@@ -1,3 +1,5 @@
+### JAVA
+
 # Compiled class file
 *.class
 
@@ -23,6 +25,9 @@
 hs_err_pid*
 replay_pid*
 
+
+
+### ECLIPSE 
 
 .metadata
 bin/
@@ -84,3 +89,25 @@ local.properties
 # Uncomment this line if you wish to ignore the project description file.
 # Typically, this file would be tracked if it contains build/dependency configurations:
 #.project
+
+
+
+#### MAVEN 
+
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# https://github.com/takari/maven-wrapper#usage-without-binary-jar
+.mvn/wrapper/maven-wrapper.jar
+
+# Eclipse m2e generated files
+# Eclipse Core
+.project
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
