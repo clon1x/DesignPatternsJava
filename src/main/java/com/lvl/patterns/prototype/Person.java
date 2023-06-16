@@ -2,7 +2,7 @@ package com.lvl.patterns.prototype;
 
 import java.util.Arrays;
 
-public class Person {
+public class Person implements Cloneable {
 
 	public String [] names;
 	public Address address;
@@ -11,6 +11,11 @@ public class Person {
 		super();
 		this.names = names;
 		this.address = address;
+	}
+
+	@Override
+	public Person clone() throws CloneNotSupportedException {
+		return new Person(names, address);
 	}
 
 	@Override
