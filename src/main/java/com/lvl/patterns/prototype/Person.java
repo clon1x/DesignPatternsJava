@@ -15,7 +15,7 @@ public class Person implements Cloneable {
 
 	@Override
 	public Person clone() throws CloneNotSupportedException {
-		return new Person(names, address);
+		return new Person(names.clone(), address.clone());
 	}
 
 	@Override

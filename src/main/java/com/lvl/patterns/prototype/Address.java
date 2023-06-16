@@ -1,6 +1,6 @@
 package com.lvl.patterns.prototype;
 
-public class Address {
+public class Address implements Cloneable {
 
 	public String streetName;
 	public int houseNumber;
@@ -9,6 +9,11 @@ public class Address {
 		super();
 		this.streetName = streetName;
 		this.houseNumber = houseNumber;
+	}
+
+	@Override
+	public Address clone() throws CloneNotSupportedException {
+		return new Address(streetName, houseNumber);
 	}
 
 	@Override
