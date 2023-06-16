@@ -1,26 +1,23 @@
 package com.lvl.patterns.prototype;
 
-import java.util.Arrays;
+public class Person {
 
-public class Person implements Cloneable {
-
-	public String [] names;
+	public String name;
 	public Address address;
 	
-	public Person(String[] names, Address address) {
+	public Person(String name, Address address) {
 		super();
-		this.names = names;
+		this.name = name;
 		this.address = address;
 	}
 
-	@Override
-	public Person clone() throws CloneNotSupportedException {
-		return new Person(names.clone(), address.clone());
+	public Person(Person other) {
+		this(other.name, new Address(other.address));
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Person [names=" + Arrays.toString(names) + ", address=" + address + "]";
+		return "Person [name=" + name + ", address=" + address + "]";
 	}
 	
 }
