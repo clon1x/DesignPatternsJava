@@ -1,7 +1,10 @@
 package com.lvl.patterns.singleton;
 
-public class BasicSingleton {
+import java.io.Serializable;
+
+public class BasicSingleton implements Serializable {
     
+    private static final long serialVersionUID = -950838993944145186L;
     private int value = 0;
     
     private BasicSingleton() {}
