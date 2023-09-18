@@ -24,4 +24,8 @@ public class BasicSingleton implements Serializable {
 	this.value = value;
     }
     
+    protected Object readResolve() {
+	return INSTANCE;
+    }
+    
 }
