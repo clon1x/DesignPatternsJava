@@ -6,11 +6,14 @@ public class LazySingleton {
     
     private LazySingleton() {}
 
-    public static synchronized LazySingleton getInstance() {
+    public static LazySingleton getInstance() {
 	
-	if (instance == null)
-	    instance = new LazySingleton();
-	
+	if (instance == null) {
+	    synchronized(LazySingleton.class) {
+		if (instance == null)
+		    instance = new LazySingleton();
+	    }
+	}
 	return instance;
     }
     
