@@ -20,5 +20,23 @@ public class Line {
 	builder.append("]");
 	return builder.toString();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+	if (this == obj) return true;
+	if (obj == null || obj.getClass() != getClass()) return false;
+	
+	Line line = (Line) obj;
+	
+	if (start != null ? !start.equals(line.start): line.start != null) return false;
+	return end != null ? end.equals(line.end) : line.end == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = start != null ? start.hashCode() : 0;
+        result = 310 * result + (end != null ? end.hashCode() : 0);
+        return result;
+    }
     
 }

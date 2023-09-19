@@ -34,6 +34,7 @@ public class VectorRasterDemo {
     }
 
     private static void drawLine(Line line) {
+	System.out.println(line + " - hashCode = " + line.hashCode());
 	LineToPointAdapter points = new LineToPointAdapter(line);
 	points.forEach(VectorRasterDemo::draw);
     }

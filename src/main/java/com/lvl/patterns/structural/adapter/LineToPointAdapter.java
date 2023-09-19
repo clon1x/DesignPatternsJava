@@ -2,14 +2,27 @@ package com.lvl.patterns.structural.adapter;
 
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
-public class LineToPointAdapter extends ArrayList<Point> {
+public class LineToPointAdapter implements Iterable<Point> {
 
-    private static final long serialVersionUID = 4399500947481173051L;
     private static int count = 0;
+    private static Map<Integer, List<Point>> cache = new HashMap<>();
+    private int hash;
 
     public LineToPointAdapter(Line line) {
-	System.out.println(String.format("%d: Generating a bunch of points for %s (no caching).", ++count, line));
+	hash = line.hashCode();
+	if (cache.containsKey(hash)) {
+	    System.out.println("Cached line. Will not be re-generated.");
+	    return; // cached line
+	}
+	
+	System.out.println(String.format("%d: Generating a bunch of points for %s (caching).", ++count, line));
 	
 	int left = Math.min(line.start.x, line.end.x);
 	int right = Math.max(line.start.x, line.end.x);
@@ -18,27 +31,42 @@ public class LineToPointAdapter extends ArrayList<Point> {
 	int dx = right - left;
 	int dy = bottom - top;
 	
+	List<Point> points = new ArrayList<>();
 	if (dx == 0) {
-	    verticalLine(left, top, bottom);
+	    verticalLine(points, left, top, bottom);
 	} else if (dy == 0) {
-	    horizontalLine(top, left, right);
+	    horizontalLine(points, top, left, right);
 	} else {
 	    throw new InvalidParameterException("Slanted lines are not supported!");
 	}
+	cache.put(hash, points);
     }
 
-    private void verticalLine(int x, int top, int bottom) {
+    private void verticalLine(List<Point> points, int x, int top, int bottom) {
 	for (int y = top; y <= bottom; y++) {
-	    this.add(new Point(x, y));
+	    points.add(new Point(x, y));
 	}
-	
     }
 
-    private void horizontalLine(int y, int left, int right) {
+    private void horizontalLine(List<Point> points, int y, int left, int right) {
 	for (int x = left; x <= right; x++) {
-	    this.add(new Point(x, y));
+	    points.add(new Point(x, y));
 	}
-	
+    }
+
+    @Override
+    public Iterator<Point> iterator() {
+	return cache.get(hash).iterator();
+    }
+
+    @Override
+    public void forEach(Consumer<? super Point> action) {
+	cache.get(hash).forEach(action);
+    }
+
+    @Override
+    public Spliterator<Point> spliterator() {
+	return cache.get(hash).spliterator();
     }
     
 }

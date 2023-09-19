@@ -19,5 +19,19 @@ public class Point {
 	builder.append("]");
 	return builder.toString();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || obj.getClass() != getClass()) return false;
+        
+        Point p = (Point) obj;
+        return (p.x == x && p.y == y);
+    }
+
+    @Override
+    public int hashCode() {
+	return 31 * x + y;
+    }
     
 }
