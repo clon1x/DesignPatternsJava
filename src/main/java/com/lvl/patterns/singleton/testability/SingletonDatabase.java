@@ -9,7 +9,7 @@ import java.util.Hashtable;
 import java.util.List;
 import com.google.common.collect.Iterables;
 
-public class SingletonDatabase {
+public class SingletonDatabase implements Database {
     
     private Dictionary<String, Integer> capitals = new Hashtable<>();
     private static int instanceCount = 0;
@@ -40,7 +40,7 @@ public class SingletonDatabase {
 	}
     }
 
-    public static SingletonDatabase getInstance() {
+    public static Database getInstance() {
 	return INSTANCE;
     }
     

@@ -4,21 +4,19 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class SingletonRecordFinderTest {
-
-    @BeforeEach
-    void setUp() throws Exception {
-    }
+    
+    Database mockDb = new DummyDatabase();
 
     @Test
     void testGetTotalPopulation() {
-	SingletonRecordFinder rf = new SingletonRecordFinder();
-	List<String> names = List.of("Seoul", "Mexico City");
+	Database db = new DummyDatabase();
+	SingletonRecordFinder rf = new SingletonRecordFinder(db);
+	List<String> names = List.of("alpha", "gamma");
 	int tp = rf.getTotalPopulation(names);
-	assertEquals(34900000, tp);
+	assertEquals(4, tp);
     }
 
 }
