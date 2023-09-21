@@ -1,4 +1,7 @@
-package com.lvl.patterns.structural.bridge;
+package com.lvl.patterns.structural.bridge.shape;
+
+import com.lvl.patterns.structural.bridge.Point;
+import com.lvl.patterns.structural.bridge.renderer.Renderer;
 
 public class Square extends Shape {
 

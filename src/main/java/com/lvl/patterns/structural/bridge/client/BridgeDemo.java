@@ -1,10 +1,10 @@
 package com.lvl.patterns.structural.bridge.client;
 
-import com.lvl.patterns.structural.bridge.Circle;
-import com.lvl.patterns.structural.bridge.RasterRenderer;
-import com.lvl.patterns.structural.bridge.Renderer;
-import com.lvl.patterns.structural.bridge.Square;
-import com.lvl.patterns.structural.bridge.VectorRenderer;
+import com.lvl.patterns.structural.bridge.renderer.RasterRenderer;
+import com.lvl.patterns.structural.bridge.renderer.Renderer;
+import com.lvl.patterns.structural.bridge.renderer.VectorRenderer;
+import com.lvl.patterns.structural.bridge.shape.Circle;
+import com.lvl.patterns.structural.bridge.shape.Square;
 
 public class BridgeDemo {
 

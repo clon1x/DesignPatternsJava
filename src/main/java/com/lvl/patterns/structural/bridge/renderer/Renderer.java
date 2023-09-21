@@ -1,4 +1,6 @@
-package com.lvl.patterns.structural.bridge;
+package com.lvl.patterns.structural.bridge.renderer;
+
+import com.lvl.patterns.structural.bridge.Point;
 
 public interface Renderer {
 
