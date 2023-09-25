@@ -1,16 +1,34 @@
 package com.lvl.patterns.structural.composite.neuralnetwork;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
 /**
  * A neuron has in and out connections from/to other neurons.
  */
-public class Neuron {
+public class Neuron implements SomeNeurons {
 
-    public ArrayList<Neuron> in, out;
+    public List<Neuron> in = new ArrayList<>();
+    public List<Neuron> out = new ArrayList<>();
     
-    public void connectTo(Neuron other) {
-	out.add(other);
-	other.in.add(this);
+    @Override
+    public void forEach(Consumer<? super Neuron> action) {
+	action.accept(this);
     }
+
+    @Override
+    public Iterator<Neuron> iterator() {
+        return Collections.singleton(this).iterator();
+    }
+
+    @Override
+    public Spliterator<Neuron> spliterator() {
+        return Collections.singleton(this).spliterator();
+    }
+
+
 }
