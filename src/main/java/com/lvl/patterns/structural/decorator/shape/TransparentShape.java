@@ -1,16 +1,17 @@
 package com.lvl.patterns.structural.decorator.shape;
 
-public class TransparentShape implements Shape {
+import java.util.function.Supplier;
+
+public class TransparentShape<T extends Shape> implements Shape {
 
     private Shape shape;
     private int transparency;
     
-    public TransparentShape(Shape shape, int transparency) {
-	super();
-	this.shape = shape;
+    public TransparentShape(Supplier<? extends T> constructor, int transparency) {
+	shape = constructor.get();
 	this.transparency = transparency;
     }
-
+    
     @Override
     public String info() {
 	return shape.info() + " and transparency of " + transparency + "%";
