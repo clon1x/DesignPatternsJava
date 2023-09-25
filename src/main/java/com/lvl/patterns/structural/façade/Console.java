@@ -17,6 +17,14 @@ public class Console {
 	viewports.add(viewport);
     }
     
+    public static Console newConsole(int width, int height) {
+	Buffer buffer = new Buffer(width, height);
+	Viewport viewport = new Viewport(buffer, width, height, 0, 0);
+	Console console = new Console(width, height);
+	console.addViewport(viewport);
+	return console;
+    }
+    
     public void render() {
 	for (int y = 0; y < height; ++y) {
 	    for (int x = 0; x < width; ++x) {
